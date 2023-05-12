@@ -1,3 +1,13 @@
+<pre>
+M""""""""M MMP"""""YMM M""""""'YMM MMP"""""YMM                                  
+TODO  TODO M' .TOP. `M M  TODO. `M M' .TOP. `M                                  
+TODO  TODO M  TODOM  M M  TODOM  M M  TODOM  M                                  
+TODO  TODO M  TODOM  M M  TODOM  M M  TODOM  M                                  
+TODO  TODO M. `TOP' .M M  TODO' .M M. `TOP' .M                                  
+TODO  TODO MMb     dMM M       .MM MMb     dMM                                  
+TODOTODOTO TODOTODOTOP TODOTODOTOP TODOTODOTOP
+</pre>
+
 # TODO_Python_SQLite3
 Simple ToDo app. Like mini-Django project. With model-code + loguru for catching mistakes
 
