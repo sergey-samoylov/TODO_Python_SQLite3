@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
 
 import typer
+
 from loguru import logger
 from rich.console import Console
 from rich.table import Table
 
-from database import (complete_todo, delete_todo, get_all_todos, insert_todo,
-                      update_todo)
 from model import Todo
+from database import (
+    get_all_todos,
+    delete_todo,
+    insert_todo,
+    complete_todo,
+    update_todo
+)
+
+from loguru import logger
 
 logger.add(
     "log/todocli.log",
@@ -21,39 +29,34 @@ console = Console()
 
 app = typer.Typer()
 
-
 @logger.catch
-@app.command(short_help="adds an item")
+@app.command(short_help='adds an item')
 def add(task: str, category: str):
     typer.echo(f"adding {task}, {category}")
     todo = Todo(task, category)
     insert_todo(todo)
     show()
 
-
 @logger.catch
 @app.command()
 def delete(position: int):
     typer.echo(f"deleting {position}")
-    delete_todo(position - 1)
+    delete_todo(position-1)
     show()
-
 
 @logger.catch
 @app.command()
 def update(position: int, task: str = None, category: str = None):
     typer.echo(f"updating {position}")
-    update_todo(position - 1, task, category)
+    update_todo(position-1, task, category)
     show()
-
 
 @logger.catch
 @app.command()
 def complete(position: int):
     typer.echo(f"complete {position}")
-    complete_todo(position - 1)
+    complete_todo(position-1)
     show()
-
 
 @logger.catch
 @app.command()
@@ -68,29 +71,23 @@ def show():
     table.add_column("Done", min_width=12, justify="right")
 
     def get_category_color(category):
-        colors = {
-            "GitHub": "yellow",
-            "Learn": "cyan",
-            "Python": "purple",
-            "Sport": "cornflower_blue",
-            "Study": "green",
-            "Work": "blue",
-            "YouTube": "red",
+        COLORS = {
+            'Learn': 'cyan',
+            'Work': 'blue',
+            'GitHub': 'yellow',
+            'YouTube': 'red',
+            'Sports': 'cyan',
+            'Study': 'green'
         }
-        if category in colors:
-            return colors[category]
-        return "white"
+        if category in COLORS:
+            return COLORS[category]
+        return 'white'
 
     for idx, task in enumerate(tasks, start=1):
         c = get_category_color(task.category)
-        is_done_str = "\ueab2" if task.status == 2 else "\ueab8"
-        table.add_row(
-            str(idx),
-            task.task,
-            f"[{c}]{task.category}[/{c}]",
-            is_done_str)
+        is_done_str = '\ueab2' if task.status == 2 else '\ueab8'
+        table.add_row(str(idx), task.task, f'[{c}]{task.category}[/{c}]', is_done_str )
     console.print(table)
-
 
 if __name__ == "__main__":
     app()
