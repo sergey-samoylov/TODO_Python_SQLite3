@@ -8,6 +8,8 @@ TODO  TODO MMb     dMM M       .MM MMb     dMM
 TODOTODOTO TODOTODOTOP TODOTODOTOP TODOTODOTOP
 </pre>
 
+[![TODO Python](https://github.com/sergey-samoylov/TODO_Python_SQLite3/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/sergey-samoylov/TODO_Python_SQLite3/actions/workflows/main.yml)
+
 # TODO_Python_SQLite3
 Simple ToDo app. Like mini-Django project. With model-code + loguru for catching mistakes
 
